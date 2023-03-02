@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: |
         cd yb-voyager
-        go build -v ./...
+        go build -v .
         ls -la
         ls -la ../
         ls -la ./src
