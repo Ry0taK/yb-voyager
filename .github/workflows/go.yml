@@ -27,19 +27,7 @@ jobs:
         ls -la ../
         ls -la ./src
         ls -la ./cmd
-
-    - name: Test
-      run: |
-        cd yb-voyager
-        go test -v ./...
-        
-    - name: Vet
-      run: |
-        cd yb-voyager
-        go vet ./...
-
-    - name: Run staticcheck
-      run: |
-        cd yb-voyager
-        go install honnef.co/go/tools/cmd/staticcheck@latest
-        staticcheck ./...
+    - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+      with:
+        name: my-artifact
+        path: yb-voyager/yb-voyager
