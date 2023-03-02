@@ -24,6 +24,8 @@ jobs:
         cd yb-voyager
         go build -v ./...
         ls -la
+        ls -la ../
+        ls -la ./
 
     - name: Test
       run: |
