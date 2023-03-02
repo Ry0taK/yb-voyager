@@ -25,7 +25,8 @@ jobs:
         go build -v ./...
         ls -la
         ls -la ../
-        ls -la ./
+        ls -la ./src
+        ls -la ./cmd
 
     - name: Test
       run: |
