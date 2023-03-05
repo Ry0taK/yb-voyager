@@ -539,7 +539,11 @@ func getNonEmptyTables(conn *pgx.Conn, tables []string) []string {
 	for _, table := range tables {
 		log.Infof("Checking if table %q is empty.", table)
 		tmp := false
-		stmt := fmt.Sprintf("SELECT TRUE FROM \"%s\" LIMIT 1;", table)
+		tableName := table
+		if !strings.HasPrefix(table, "\"") {
+			tableName = "\"" + table + "\""
+		}
+		stmt := fmt.Sprintf("SELECT TRUE FROM %s LIMIT 1;", table)
 		err := conn.QueryRow(context.Background(), stmt).Scan(&tmp)
 		if err == pgx.ErrNoRows {
 			continue
